@@ -1,14 +1,13 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Navbar and Cards Example</title>
+    <title>Single Blog Entry with Navbar</title>
     <style>
         body {
+            background-color: black;
             font-family: Arial, sans-serif;
-            background-color: #000000;
             margin: 0;
             padding: 0;
         }
@@ -25,6 +24,7 @@
         }
         nav ul li {
             float: left;
+            margin-right: 10px;
         }
         nav ul li a {
             display: block;
@@ -33,30 +33,34 @@
             padding: 14px 16px;
             text-decoration: none;
         }
-        .container {
-            padding: 20px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        .card {
-            width: 350px;
-            margin: 20px;
-            padding: 15px;
+        .blog {
             background-color: #fff;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
             border: 1px solid #ddd;
             border-radius: 5px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            text-align: center;
         }
-        .card img {
-            width: 300px;
-            height: 300px;
+        .blog img {
+            width: 800px;
+            height: 500px;
             border-radius: 5px;
+            margin-bottom: 10px;
         }
-        .card h2 {
-            margin-top: 10px;
+    
+        .blog h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        .blog h3 {
             font-size: 1.5rem;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        .blog p {
+            line-height: 1.6;
+            margin-bottom: 15px;
         }
     </style>
 </head>
@@ -70,15 +74,17 @@
         </ul>
     </nav>
 
-    <div class="container">
-   <% Blogs.forEach((blog)=>{   %>
-    
-        <div class="card">
-            <img src=<%- blog.image %> alt="Image 1">
-            <h2> <%- blog.title %> </h2>
-            <a href="/blog/<%-blog._id %>">See More</a>
-        </div>  
-        <%  })  %>
+    <div class="blog">
+        <img  src="/<%- blog.image %>" alt="Blog Image" >
+        <h2><%- blog.title %></h2>
+        <h3><%- blog.subtitle %></h3>
+        <p>
+            <%- blog.description %>
+        </p>
+        <button><a href="/editblog/<%- blog._id  %>"> Edit</a></button>
+        <button><a href="/deleteblog/<%- blog._id  %>">Delete</a></button>
+
     </div>
+    
 </body>
 </html>
