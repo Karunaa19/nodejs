@@ -1,8 +1,16 @@
 {
   "dependencies": {
+    "bcrypt": "^5.1.1",
+    "bcryptjs": "^2.4.3",
+    "cookie": "^0.6.0",
+    "dotenv": "^16.4.5",
     "ejs": "^3.1.10",
     "express": "^4.19.2",
+    "json": "^11.0.0",
     "mongoose": "^8.4.5",
-    "multer": "^1.4.5-lts.1"
+    "multer": "^1.4.5-lts.1",
+    "parser": "^0.1.4",
+    "token": "^0.1.0",
+    "web": "^0.0.2"
   }
 }
