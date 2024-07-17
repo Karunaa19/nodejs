@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Blog</title>
+    <title>Edit Blog</title>
     <style>
-        body {
+  
+  body {
             font-family: Arial, sans-serif;
             background-color: #000000;
             margin: 0;
@@ -31,8 +32,8 @@
             text-align: center;
             padding: 14px 16px;
             text-decoration: none;
-        
-        }.search-bar-container {
+        }
+        .search-bar-container {
             display: flex;
             justify-content: end;
             margin: 0 auto;
@@ -131,21 +132,20 @@
     <%- include("navbar.ejs") %>
 
     <section id="blog-creator">
-        <h1>Create Your Blog</h1>
-        <form id="blog-form" action="/createblog" method="post" enctype="multipart/form-data">
+        <h1>Edit Your Blog</h1>
+        <form id="blog-form" action="/editblog/<%- blog._id %>" method="post" enctype="multipart/form-data">
             <label for="blog-title">Title:</label>
-            <input type="text" id="blog-title" name="title" required>
-
+            <input type="text" id="blog-title" name="title" value="<%- blog.title %>" required> 
             <label for="blog-subtitle">Subtitle:</label>
-            <input type="text" id="blog-subtitle" name="subtitle">
+            <input type="text" id="blog-subtitle" name="subtitle" value=" <%- blog.subtitle %>">
 
             <label for="image">Image:</label>
-            <input type="file" id="image" name="image" accept="image/*" required>
+            <input type="file" id="image" name="image" accept="image/*" value="/<%- blog.image %>" required>
             
             <label for="blog-description">Description:</label>
-            <textarea id="blog-description" name="description" rows="4" required></textarea>
+            <textarea id="blog-description" name="description" rows="4" required> <%- blog.description %> </textarea>
 
-            <button type="submit" onclick="return createBlogPost()">Create Blog</button>
+            <button type="submit" onclick="return editBlogPost()">Edit Blog</button>
         </form>
     </section>
 

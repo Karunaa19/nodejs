@@ -1,30 +1,127 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Navbar and Cards Example</title>
+    <title>Home</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color:rgb(255, 255, 255);
+            margin: 0;
+            padding: 0;
+        }
+        nav {
+            background-color:rgb(32, 36, 4);
+            color: #fff;
+            padding: 10px 20px;
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        nav ul li {
+            float: left;
+        }
+        nav ul li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        .search-bar-container {
+            display: flex;
+            justify-content: end;
+            margin: 0 auto;
+            flex: 2;
+        }
+        .search-bar {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            width: 450px;
+            font-size: 16px;
+            padding-left: 10px;
+        }
+        .search-btn {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: -4px;
+        }
+        .btn{
+            background-color: #141414;
+            color: #fff;
+            border: none;
+            padding: 3px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        .heading {
+    font-size: 2.5em;
+    color: rgb(27, 216, 87);
+    text-transform: uppercase;
+    margin: 20px 0;
+    letter-spacing: 2px;
+    border-bottom: 2px solid #333;
+    display: inline-block;
+    padding-bottom: 10px;
+    font-weight: bold;
+    text-align: center; /* Center text horizontally */
+    width: 100%; /* Full width */
+    box-sizing: border-box; /* Include padding and border in width calculation */
+}
+        .container {
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .card {
+            width: 350px;
+            margin: 20px;
+            padding: 15px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .card img {
+            width: 300px;
+            height: 300px;
+            border-radius: 5px;
+        }
+        .card h2 {
+            margin-top: 10px;
+            font-size: 1.5rem;
+        }
+    </style>
 </head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Blog</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Contact</a></li>
-        </ul>
-    </nav>
+    <%- include("navbar.ejs") %>
+    <h2 class="heading">Top places to visit in Nepal</h2>
 
     <div class="container">
-   <% Blogs.forEach((blog)=>{   %>
-    
-        <div class="card">
-            <img src=<%- blog.image %> alt="Image 1">
-            <h2> <%- blog.title %> </h2>
-            <a href="/blog/<%-blog._id %>">See More</a>
-        </div>  
-        <%  })  %>
+        <% if (Blogs.length === 0) { %>
+            <p>No blogs found.</p>
+        <% } else { %>
+            <% Blogs.forEach((blog)=>{   %>
+                <div class="card">
+                    <img src=<%- blog.image %> alt="Image 1">
+                    <h2> <%- blog.title %> </h2>
+                    <a href="/blog/<%-blog._id %>">See More</a>
+                </div>  
+            <%  })  %>
+        <% } %>
     </div>
 </body>
 </html>

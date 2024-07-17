@@ -1,7 +1,35 @@
-<div class="navbar">
-        <a href="#">Home</a>
-       
-        <a href="#">About</a>
-        <a href="#">Contact</a>
-    
-    </div>
+
+<nav>
+    <% if (userId) { %>
+    <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+        <div class="search-bar-container">
+            <form action="/" method="get">
+                <input type="search" name="search"  placeholder="Search..." class="search-bar">
+                <button type="submit" class="search-btn">Search</button>
+            </form>
+            <li><button class="btn"><a href="/createblog">Create BLog</a></button></li>
+            <li><button class="btn"><a href="/logout">Logout</a></button></li>
+        </div>
+        
+    </ul>
+    <% } else { %>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+            <div class="search-bar-container">
+                <form action="/" method="get">
+                    <input type="search" name="search"  placeholder="Search..." class="search-bar">
+                    <button type="submit" class="search-btn">Search</button>
+            </form>
+            <li><button class="btn"><a href="/register">Register</a></button></li>
+            <li><button class="btn"><a href="/login">Login</a></button></li>
+            </div>    
+        </ul>
+    <% } %>     
+</nav>

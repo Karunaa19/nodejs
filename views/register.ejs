@@ -6,8 +6,8 @@
     <title>User Registration</title>
     <style>
         body {
-            background-color: black;
             font-family: Arial, sans-serif;
+            background-color: #000000;
             margin: 0;
             padding: 0;
         }
@@ -24,7 +24,6 @@
         }
         nav ul li {
             float: left;
-            margin-right: 10px;
         }
         nav ul li a {
             display: block;
@@ -33,19 +32,53 @@
             padding: 14px 16px;
             text-decoration: none;
         }
-        form {
-            max-width: 250px;
+        .search-bar-container {
+            display: flex;
+            justify-content: end;
             margin: 0 auto;
+            flex: 2;
+        }
+        .search-bar {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            width: 450px;
+            font-size: 16px;
+            padding-left: 10px;
+        }
+        .search-btn {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: -4px;
+        }
+
+        .btn{
+            background-color: #141414;
+            color: #fff;
+            border: none;
+            padding: 3px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        .form {
+            
+            max-width: 250px;
+            margin: 5% auto;
             background: #f9f9f9;
             padding: 20px;
             border: 1px solid #ccc;
             border-radius: 5px;
         }
-        label, input {
+        .label, .input {
             display: block;
             margin-bottom: 10px;
         }
-        input[type="submit"] {
+        .input[type="submit"] {
             background-color: #000000;
             color: white;
             padding: 10px 30px;
@@ -54,37 +87,32 @@
             cursor: pointer;
             font-size: 16px;
         }
-        input[type="submit"]:hover {
+        .input[type="submit"]:hover {
             background-color: #292929;
         }
 
     </style>
 </head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Blog</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Contact</a></li>
-        </ul>
-    </nav>
+    
+    <%- include("navbar.ejs") %>
 
-    <h2>User Registration Form</h2>
-    <form action="/register" method="post">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required>
+    
+    <form action="/register" method="post" class="form">
+        <h2>User Registration Form</h2>
+        <label for="username" class="label">Username:</label>
+        <input type="text" id="username" name="username" class="input" required>
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
+        <label for="email"  class="label">Email:</label>
+        <input type="email" id="email" name="email"  class="input" required>
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
+        <label for="password"  class="label">Password:</label>
+        <input type="password" id="password" name="password"  class="input" required>
 
-        <label for="confirm-password">Confirm Password:</label>
-        <input type="password" id="confirm-password" name="confirm-password" required>
+        <label for="confirm-password"  class="label">Confirm Password:</label>
+        <input type="password" id="confirm-password" name="confirm-password"  class="input" required>
 
-        <input type="submit" value="Register">
+        <input type="submit"  class="input" value="Register">
     </form>
 </body>
 </html>
